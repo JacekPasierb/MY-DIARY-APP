@@ -31,7 +31,7 @@ export const SectionForm = styled.div`
   button {
     padding: 10px 20px;
     font-family: "Allura", cursive;
-    font-size: 16px;
+    font-size: 8px;
     background-color: #cfcbc0;
     color: #767267;
     border: none;
@@ -39,6 +39,15 @@ export const SectionForm = styled.div`
     cursor: pointer;
     width: auto;
     align-self: center;
+
+    @media (min-width: 480px) {
+      font-size: 16px;
+    }
+    &:hover {
+      background-color: #b3aea1; /* Zmiana koloru tła na hover */
+      color: #5e5a54; /* Zmiana koloru tekstu na hover */
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Zwiększenie cienia na hover */
+    }
   }
   div {
     color: red;
@@ -48,26 +57,43 @@ export const SectionForm = styled.div`
 export const TitleForm = styled.h2`
   font-family: "Allura", cursive;
   color: #bbbab4;
+  font-size: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const LineShort = styled.div`
   height: 2px;
-  width: 20%;
+  width: 30%;
   background-color: #71706c;
   margin-block: 10px;
+
+  @media (min-width: 1400px) {
+    width: 40%;
+  }
 `;
 
 export const LineLong = styled.div`
   height: 2px;
-  width: 60%;
+  width: 40%;
   background-color: #71706c;
   margin-block: 10px;
+
+  @media (min-width: 1400px) {
+    width: 60%;
+  }
 `;
 export const LineInner = styled.div`
   height: 2px;
-  width: 60%;
+  width: 40%;
   background-color: #7f6c61;
   margin-block: 10px;
+
+  @media (min-width: 1400px) {
+    width: 60%;
+  }
 `;
 
 export const ContainerField = styled.div`

@@ -14,7 +14,7 @@ const LoginForm = () => {
   return (
     <SectionForm>
       <ContainerTitle>
-        <TitleForm>Login...</TitleForm>
+        <TitleForm>Login Form...</TitleForm>
         <LineInner />
       </ContainerTitle>
       <Formik
@@ -48,12 +48,10 @@ const LoginForm = () => {
               <label htmlFor="login">Login</label>
               <LineShort />
               <Field type="text" name="login" placeholder="Login" />
-
               <ErrorMessage name="login" component="div" />
               <LineLong />
               <label htmlFor="password">Password</label>
               <Field type="password" name="password" placeholder="Password" />
-
               <ErrorMessage name="password" component="div" />
             </ContainerField>
             <button type="submit" disabled={isSubmitting}>

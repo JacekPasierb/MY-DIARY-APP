@@ -8,7 +8,11 @@ import {
   TitleDiary,
 } from "./Header.styled";
 import LoginForm from "../LoginForm/LoginForm";
+import { usePathname } from 'next/navigation';
+
 const Header = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   return (
     <Background>
       <Container>
@@ -16,7 +20,7 @@ const Header = () => {
           <LogoContainer>
             <TitleDiary>My Diary</TitleDiary> <Logo src="/Logo2x.png" />
           </LogoContainer>
-          <LoginForm />
+          {isHomePage && <LoginForm />}  
         </HeaderContainer>
       </Container>
     </Background>

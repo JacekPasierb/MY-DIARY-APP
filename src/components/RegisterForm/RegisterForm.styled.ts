@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 export const SectionRegister = styled.div`
-  position: absolute;
-  top: 42%;
-  left: 75%;
-  transform: translateX(-50%);
-  width: 90%;
   max-width: 400px;
   background-color: #e8ddcb;
   padding: 2rem;
@@ -15,11 +10,23 @@ export const SectionRegister = styled.div`
   border-top-right-radius: 20px;
   border-color: #b7ac9a;
 
+  @media (min-width: 768px) {
+    width: 90%;
+    position: absolute;
+    top: 42%;
+    left: 60%;
+    transform: translateX(-50%);
+  }
+
   form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
     justify-content: space-between;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
   label {
     font-family: "Allura", cursive;
@@ -45,7 +52,13 @@ export const SectionRegister = styled.div`
     cursor: pointer;
     width: auto;
     align-self: flex-end;
+     &:hover {
+      background-color: #b3aea1; /* Zmiana koloru tła na hover */
+      color: #5e5a54; /* Zmiana koloru tekstu na hover */
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Zwiększenie cienia na hover */
+    }
   }
+   
 `;
 
 export const TitleForm = styled.h2`
