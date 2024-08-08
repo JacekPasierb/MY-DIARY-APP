@@ -1,13 +1,24 @@
 import React from "react";
-import { Background } from "./Header.styled";
-
+import {
+  Background,
+  Container,
+  HeaderContainer,
+  Logo,
+  LogoContainer,
+  TitleDiary,
+} from "./Header.styled";
+import LoginForm from "../LoginForm/LoginForm";
 const Header = () => {
   return (
     <Background>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <h1>My Diary</h1> <div>Logo</div>
-      </div>
-      <div>Formularz Logowania</div>
+      <Container>
+        <HeaderContainer>
+          <LogoContainer>
+            <TitleDiary>My Diary</TitleDiary> <Logo src="/Logo2x.png" />
+          </LogoContainer>
+          <LoginForm />
+        </HeaderContainer>
+      </Container>
     </Background>
   );
 };

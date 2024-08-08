@@ -1,12 +1,13 @@
-'use client'; 
-import { createGlobalStyle } from 'styled-components';
+"use client";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'Allura', cursive;
     margin: 0 ;
     padding: 0;
     box-sizing: border-box;
+    background-color:#E8DFCE;
   }
 `;
 

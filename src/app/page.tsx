@@ -1,7 +1,9 @@
 "use client";
 import styled from "styled-components";
-import LoginForm from "../components/LoginForm/LoginForm";
+
 import Header from "../components/Header/Header";
+import RegisterForm from "../components/RegisterForm/RegisterForm";
+import { Description, InnerText } from "./page.styled";
 
 const HomeContainer = styled.div`
   max-width: 1200px;
@@ -10,18 +12,15 @@ const HomeContainer = styled.div`
   text-align: center;
 `;
 
-const HomeTitle = styled.h1`
-  font-size: 2.5rem;
-  color: #333;
-`;
-
 const Home = () => {
   return (
     <>
       <Header />
       <HomeContainer>
-        <HomeTitle>Welcome to My Diary</HomeTitle>
-        <LoginForm />
+        <Description>
+         <InnerText>Diary</InnerText>  record your thoughts like in the old days...
+        </Description>
+        <RegisterForm />
       </HomeContainer>
     </>
   );
