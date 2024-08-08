@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const Background = styled.div`
   background-color: #252c34;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4); /* Cień */
+  padding-block:40px;
 `;
 
 export const Container = styled.div`
   max-width: 1440px;
-  padding: 50px;
+  padding-inline: 50px;
 `;
 
 export const HeaderContainer = styled.div`
