@@ -1,10 +1,11 @@
 // app/api/register/route.js
 import pool from "@/lib/db";
 import bcrypt from "bcrypt";
+import { nanoid } from "nanoid";
 
 export const POST = async (request) => {
   const { username, password, email } = await request.json();
-  
+
   console.log("elo");
 
   // Sprawdź, czy użytkownik już istnieje
@@ -21,10 +22,11 @@ export const POST = async (request) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   console.log("elo3");
   // Dodanie użytkownika do bazy danych
+  const verificationToken = nanoid();
   await pool.query(
-    `INSERT INTO "Users" ("username", "password", "email", "createdAt", "updatedAt")
-     VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`,
-    [username, hashedPassword, email]
+    `INSERT INTO "Users" ("username", "password", "email", "verificationToken", "token","createdAt", "updatedAt")
+     VALUES ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`,
+    [username, hashedPassword, email, verificationToken, null]
   );
   console.log("elo4");
   return new Response("User registered successfully", { status: 201 });
