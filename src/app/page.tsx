@@ -11,7 +11,9 @@ import {
 } from "./page.styled";
 import Footer from "../components/Footer/Footer";
 
+
 const Home = () => {
+ 
   return (
     <PageWrapper>
       <Header />
@@ -26,5 +28,7 @@ const Home = () => {
     </PageWrapper>
   );
 };
+
+
 
 export default Home;
