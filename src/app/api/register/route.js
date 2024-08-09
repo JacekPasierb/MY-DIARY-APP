@@ -1,8 +1,10 @@
 // app/api/register/route.js
 import pool from "@/lib/db";
 import bcrypt from "bcrypt";
+
 export const POST = async (request) => {
   const { username, password, email } = await request.json();
+  
   console.log("elo");
 
   // Sprawdź, czy użytkownik już istnieje
@@ -10,7 +12,7 @@ export const POST = async (request) => {
     'SELECT * FROM "Users" WHERE username = $1',
     [username]
   );
-  console.log("elo1");
+  console.log("elo1", existingUser);
   if (existingUser.rows.length > 0) {
     return new Response("User already exists", { status: 400 });
   }
