@@ -4,13 +4,16 @@ import {
   ContainerField,
   ContainerTitle,
   ErrorText,
-  LineInner,
   LineLong,
   LineShort,
   SectionRegister,
   TitleForm,
 } from "./RegisterForm.styled";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
+
+import { register } from "../../redux/auth/operations";
+import { AppDispatch } from "../../redux/store";
+import { useDispatch } from "react-redux";
 
 const FormContainer = styled.div`
   position: absolute;
@@ -26,6 +29,27 @@ const FormContainer = styled.div`
 `;
 
 const RegisterForm = () => {
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleSubmit = async (
+    values: FormikValues,
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    try {
+      const result = await dispatch(
+        register({
+          login: values.login,
+          password: values.password,
+          email: values.email,
+        })
+      );
+
+      alert("Register Success !");
+      resetForm();
+    } catch (error: any) {
+      alert("Erroreeee");
+    }
+  };
   return (
     <SectionRegister>
       <ContainerTitle>
@@ -33,7 +57,7 @@ const RegisterForm = () => {
         <LineLong />
       </ContainerTitle>
       <Formik
-        initialValues={{ login: "", password: "" }}
+        initialValues={{ login: "", email: "", password: "" }}
         validate={(values) => {
           const errors = {};
           if (!values.login) {
@@ -41,12 +65,7 @@ const RegisterForm = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+        onSubmit={handleSubmit}
       >
         {({
           values,

@@ -4,7 +4,10 @@
 import styled from "styled-components";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const DiaryContainer = styled.div`
   max-width: 1200px;
@@ -20,6 +23,17 @@ export const PageWrapper = styled.div`
 `;
 
 const Diary = () => {
+  const  isLoggedIn  = useSelector(selectIsLoggedIn);  
+  const router = useRouter();
+  useEffect(()=>{
+    if (!isLoggedIn) {
+      router.push('/');
+    }
+  },[isLoggedIn, router])
+
+  if (!isLoggedIn) {
+    return <p>Loading...</p>; 
+  }
   return (
     <PageWrapper>
       <Header />

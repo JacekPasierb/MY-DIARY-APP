@@ -1,11 +1,12 @@
+"use client"; // Dodaj to na początku pliku
+
 import { ReactNode } from "react";
 import GlobalStyle from "../styles/globalStyles";
 import Head from "next/head";
-
-export const metadata = {
-  title: "My Diary App",
-  description: "A diary application built with Next.js 13",
-};
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "../redux/store";
+import { metadata } from "./metadata";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -23,7 +24,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
       <body>
         <GlobalStyle />
-        {children}
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            {children}
+          </PersistGate>
+        </Provider>
       </body>
     </html>
   );

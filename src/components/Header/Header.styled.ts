@@ -59,3 +59,24 @@ export const Logo = styled.img`
     width: 200px;
   }
 `;
+
+export const BtnLogout = styled.button`
+ padding: 10px 20px;
+    font-family: "Allura", cursive;
+    font-size: 8px;
+    background-color: #cfcbc0;
+    color: #767267;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    width: auto;
+    align-self: center;
+    @media (min-width: 480px) {
+      font-size: 16px;
+    }
+    &:hover {
+      background-color: #b3aea1; /* Zmiana koloru tła na hover */
+      color: #5e5a54; /* Zmiana koloru tekstu na hover */
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Zwiększenie cienia na hover */
+    }
+`

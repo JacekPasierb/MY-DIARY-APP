@@ -5,7 +5,7 @@ import sequelize from "../src/lib/db";
 const User = sequelize.define(
   "User",
   {
-    username: {
+    login: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,

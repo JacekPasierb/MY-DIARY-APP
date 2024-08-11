@@ -1,4 +1,5 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+"use client";
+import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import React from "react";
 import {
   ContainerField,
@@ -9,8 +10,33 @@ import {
   SectionForm,
   TitleForm,
 } from "./LoginForm.styled";
+import axios from "axios";
+import { NextResponse } from "next/server";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/operations";
+import { AppDispatch } from "../../redux/store";
 
 const LoginForm = () => {
+  const router = useRouter(); // Inicjalizuj useRouter
+  const dispatch: AppDispatch = useDispatch();
+  const handleLogin = async (
+    values: FormikValues,
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    try {
+      const result = await dispatch(
+        logIn({ login: values.login, password: values.password })
+      );
+
+      resetForm();
+
+      router.push("/diary"); // Przekierowanie na stronę /diary
+    } catch (error: any) {
+      console.error(error.message);
+      alert("Error");
+    }
+  };
   return (
     <SectionForm>
       <ContainerTitle>
@@ -26,12 +52,7 @@ const LoginForm = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
+        onSubmit={handleLogin}
       >
         {({
           values,
